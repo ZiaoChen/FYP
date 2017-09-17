@@ -1,7 +1,7 @@
 from scrapy.spider import Spider
 from scrapy.selector import Selector
 from scrapy import Request
-
+from ieeespider.items import Paper
 
 class IEEESpider(Spider):
     name = "ieeespider"
@@ -17,3 +17,4 @@ class IEEESpider(Spider):
 
     def parse(self, response):
         sel = Selector(response)
+        paper = Paper()
