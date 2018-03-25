@@ -1,0 +1,29 @@
+\section{Recommendations for Future Work}
+Due to the large scale of the system, some areas are not fully examined and there are some limitations in the current system. Future work can explore the following directions: 
+
+\begin{enumerate}
+\item Ontology development for a domain of discourse;
+\item Design and implementation of a concept recognition algorithm;
+\item Functionality improvement of the IR web application.
+\end{enumerate}
+
+\subsection{Ontology Development}
+A simplified DSP ontology was manually crafted and stored in MySQL database for this project. Future researchers can work on the development of ontology for a specific domain, including the development process, the ontology life cycle, the methodologies for building ontology, and the tool suites and languages that support them.
+
+The vision of the Semantic Web is to extend principles of the Web from documents to data. Ontology is the backbone to add rich semantics to the corresponding resources. It would gain increasing importance as the Web is involving into 3.0.
+
+\subsection{Concept Recognition}
+A traditional and simple concept recognition algorithm maps every occurrence of a term to a concept. However, this algorithm is undesirable because even same terms but in different locations may map to different concepts in practice. A context-aware concept recognition algorithm based on machine learning is thus needed so that a term in a specific location can be semantically mapped to concepts.
+
+In this project, the design and implementation of concept recognition algorithm is not the concerns. Term-to-concept mappings are manually added into the MySQL database for demonstration purpose.
+
+\subsection{Functionality Improvement}
+The IR application for this project was designed to provide an information retrieval framework with ontology. It follows the open/closed software principle and allows future developers to add on more features.
+
+Developers may enrich the IR web application with more user-friendly functionalities, such as:
+
+\begin{itemize}
+\item Suggest similar documents to users based on the documents users are viewing;
+\item Add a comments module to allow users to post comments when viewing documents;
+\item Support more interactive visualization to show the linkage among documents.
+\end{itemize}

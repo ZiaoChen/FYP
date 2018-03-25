@@ -1,0 +1,63 @@
+\section{Technology Stack}
+\label{sec:tech_stack}
+In this part, we introduce the key technology solutions that are utilized for the information retrieval web application, developed in the domain of DSP. How these technology solutions support the IR application is also elaborated.
+  
+\subsection{Django}
+Django is a free and open-source web framework, written in Python, which follows the Model-View-Template (MVT) architectural pattern \cite{Django}. Django's automatically generated admin site allows users with right permissions to create/update/delete users and any other database objects specific to Django apps. A Django app is a group of related functionality used to complete or maintain one aspect of a site \cite{DjangoApp}. A web application may consist of multiple Django apps, depending on how granular each app is.
+
+Django has been an established web framework since 2005. There are many available app plug-ins for extended features. Haystack and Django-Treebeard, which are discussed below, are the two plug-ins used for this IR application. Django also provides well-organized documentation and example code tagged for every specific release. 
+
+The core philosophy of Django is DRY: Don't Repeat Yourself. The framework places a premium on getting the absolute most out of very little code. This means less hours and less code to get new features working for developers.
+
+Django is the web framework used for the IR application.
+
+\subsection{MySQL}
+MySQL is an open-source relational database management system that uses Structured Query Language (SQL). SQL is the most popular language for adding, accessing and managing content in a database. It is most noted for its quick processing, proven reliability, ease and flexibility of use. 
+
+MySQL is the database back-end connected to Django for the IR application. It is used to store the cleaned text crawled from Document Server, the meta-data of each book section, the hierarchical ontology, and the term-to-concept mappings of each section. 
+
+\subsection{Celery}
+Celery is an asynchronous task queue based on distributed message passing \cite{Celery}. As elaborated in \cite{Celery}, it is focused on real-time operation, but supports scheduling as well. The execution units, called tasks, are executed concurrently on a single or more worker servers using multiprocessing. Tasks can execute asynchronously in the background or synchronously (wait until ready). Celery uses a message broker such as Redis to send and receive messages and runs tasks in the background.
+
+Celery, together with the message broker Redis, is used to run the lengthy crawling task in the background and update users on the crawling progress in near real time. 
+
+\subsection{Redis}
+Redis is an open source and in-memory data structure store that persists on disk \cite{Redis}. It can be used as a database, cache and message broker. The data model is key-value. Many different types of values are supported other than strings, such as lists, sets, and hashes.
+
+Redis is used in the IR application as a message broker for Celery. In a nut shell, it acts as an intermediary that passes messages between the Celery worker server and the Application Server.
+
+\subsection{Solr}
+Solr is an open-source enterprise search platform built on Apache Lucene, written in Java. It powers some heavily-trafficked websites like eBay, Bloomberg, and Netflix \cite{Solr}. 
+
+Solr runs as a standalone full-text search server. It uses the Lucene Java search library at its core for full-text indexing and search and has REST-like API with JSON response \cite{Solr}. 
+
+Solr is the search engine used in the IR application. It works with Django via the Django app HayStack, which is mentioned below.
+
+\subsection{HayStack}
+Haystack is a third-party Django app that supports modular search. It works directly with Django models \cite{DjangoModels} and provides a familiar API that allows users to plug in different search back-ends (such as Solr, Whoosh, etc) without having to modify the code \cite{Haystack}. With its extensive API, Haystack supports advanced features such as auto-complete and highlighting (i.e. auto-generate document excerpts).
+
+Haystack is used in the IR application for functionalities related to document indexing and keyword search. It can be thought as a linkage between Django and Solr.
+
+\subsection{Django-Treebeard}
+Django-Treebeard is a third-party Django app that provides efficient tree implementation for Django 1.7+ \cite{Treebeard}. It optimizes non-native tree operations such as adding/getting ancestor/child/sibling nodes and provides easy-to-use API. Django-Treebeard also provides drag-and-drop features for easy modification of tree nodes in the Django admin page.
+
+Django-Treebeard is used in the IR application to build hierarchical ontology with Django models. 
+
+\subsection{PDF.js}
+PDF.js is a general-purpose, web standards-based platform for parsing and rendering PDFs \cite{PDFjsDoc}. It is an open-source JavaScript library, first released in 2011 by Mozilla Foundation \cite{PDFjsWiki}.
+
+PDF.js can work as a part of a website or of a browser. It has been included in Mozilla Firefox since 2012 (Version 15) and has been enabled by default since 2013 (Version 19) \cite{PDFjsWiki}. There also exists a Chrome extension.
+
+Understood from the official documentation \cite{PDFjsDoc}, the PDF.js project contains 3 layers - Core, Display, and Viewer. The Core layer is where a binary PDF is parsed and interpreted. This layer is the foundation for all subsequent layers. The Display layer takes the Core layer and exposes an easier-to-use API to render PDFs and get other information out of a document. This API is what the version number is based on. The Viewer layer is built on the Display layer and handles user interactions in the PDF viewer.
+
+PDF.js is used in the IR application to allow users to view, download, print, zoom, and navigate PDF files. The Viewer layer is customized to support the functionality of highlighting terms mapped to selected concepts.
+
+\subsection{jQuery}
+jQuery is a JavaScript library that greatly simplifies JavaScript programming. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers \cite{jQuery}.
+
+jQuery is used extensively for the front-end development of the IR application.
+
+\subsection{Bootstrap}
+Bootstrap is a very popular HTML, CSS, and JavaScript framework for developing responsive and mobile first web application. It makes front-end web development faster and easier. It is free and open source. Bootstrap 3 supports the latest versions of Google Chrome, Firefox, Internet Explorer, Safari for Mac, and Microsoft Edge.
+
+Bootstrap is used for designing a mobile-friendly and pleasant-looking web UI of the IR application.

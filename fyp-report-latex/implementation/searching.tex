@@ -1,0 +1,63 @@
+\section{Searching}
+\subsection{Searching and Filtering}
+A search form module (\path{myfyp/dsp_search/forms.py}) was built to accept user query, pass the query to Solr, and retrieve search results. The module has a class named \texttt{SectionSearchForm}, which is inherited from Haystack's built-in class \texttt{SearchForm}.
+
+The search form consists of a single field \texttt{q}, which is for query. Upon searching, the form will take the cleaned content of the \texttt{q} field. The searching process is done by Haystack via the \texttt{search()} method. The method returns a collection of documents, or a \textit{queryset} in Django's terms. Below is the code snippet. 
+
+\begin{minted}{python}
+def search(self):
+    """ Override search() from parent class. """
+    to_have = json.loads(self.data.get(self.with_field, '[]'))
+    not_to_have = json.loads(self.data.get(self.without_field, '[]'))
+    sqs = super(SectionSearchForm, self).search().models(Section)
+    to_remove = self.get_removed_sids(sqs, to_have, not_to_have)
+    return sqs.exclude(sid__in=to_remove)
+\end{minted}
+
+\texttt{to\char`_have} and \texttt{not\char`_to\char`_have} are two lists of concept IDs from the ontology. Each document in the search results must contain concepts specified in \texttt{to\char`_have} and must not contain concepts specified in \texttt{not\char`_to\char`_have}. \texttt{to\char`_remove} is a list of section IDs that indicate sections to be removed based on the two conditions enforced. 
+
+The functionality of filtering search results is realized by passing \texttt{to\char`_have} and  \texttt{not\char`_to\char`_have} arguments via parameters in GET requests. The \texttt{search()} method first retrieves documents that match the query and then excludes those that are in the \texttt{to\char`_remove} list. The \texttt{to\char`_remove} list is generated based on \texttt{to\char`_have} and  \texttt{not\char`_to\char`_have} conditions.
+
+\subsection{Search Results View}
+A Django view is a Python function or a class that takes a Web request and returns a Web response. This response can be the HTML content of a Web page, a JSON document, a 404 error, or anything. The view itself contains logic that is necessary to return that response. The convention is to put views in files called \texttt{views.py} in Django's application directories.
+
+A class named \texttt{SectionSearchView} was built to receive users' query request and return response back to users. \texttt{SectionSearchView} is dependent on the form class \texttt{SectionSearchForm} discussed earlier.
+
+The \texttt{SectionSearchView} class includes the following instance methods:
+\begin{itemize}
+\item \texttt{get\char`_results\char`_count(self)}: Get the total number of sections that match the query;
+\item \texttt{get\char`_section\char`_list(self)}: Get the list of IDs of sections that match the query;
+\item \texttt{get\char`_concept\char`_tree(self)}: Get a JSON-formated concept tree that corresponds to the search results;
+\item \texttt{get\char`_section\char`_count(self)}: Get a JSON-formatted dictionary describing the number of sections for each concept in the concept tree;
+\item \texttt{get\char`_context\char`_data(self, *args, **kwargs)}: Get a dictionary representing the template context. 
+\end{itemize}
+
+Once receiving the queryset returned from \texttt{SectionSearchForm}'s \texttt{search()} method, \texttt{SectionSearchView} computes the number of search results via the \texttt{get\char`_results\char`_count()} method. It also  gets the concept tree of search results with \texttt{get\char`_concept\char`_tree()} method. More details on concept tree generation are discussed in Section \ref{subsec:concept_tree}. To indicate the number of sections that contain each concept in the concept tree, \texttt{get\char`_section\char`_count()} is then called. Lastly, the view \texttt{SectionSearchView} uses a Django template (\path{myfyp/dsp_search/results_page.html}) and the template context returned from \texttt{get\char`_context\char`_data()} to generate HTML response.
+
+
+\subsection{Concept Tree Generation for Search Results}
+\label{subsec:concept_tree}
+Concept tree is a hierarchical tree structure that represents concepts related to the search results. In this thesis, \textit{immediate concepts} for a document refer to concepts that can be found in the \texttt{Concept mappings} table for the document. On the contrary, \textit{related concepts} for a document are those immediate concepts and their ancestor concepts. Thus, concept tree can also be thought as a set of related concepts for all documents in the search results.
+
+The class \texttt{ConceptDictionaryGenerator}, located in \path{myfyp/dsp_search/views.py}, is used to generate the dictionarized concept tree as well as the section counts for each concept in the concept tree.
+
+The class has an attribute named \texttt{section\char`_list}, which is a list of section IDs representing the search results. It has the following two methods called from the \texttt{SectionSearchView} class:
+\begin{itemize}
+\item \texttt{dictionarize\char`_concept\char`_hierarchy(self)}: Get a dictionarized concept tree based on the sections represented by \texttt{section\char`_list};
+\item \texttt{get\char`_section\char`_counts(self)}: Get a dictionary describing the number of sections for each concept in the concept tree;
+\end{itemize}
+
+In a nut shell, generating concept tree is realized by:
+\begin{enumerate}
+\item Retrieve immediate concepts for each document in the search results. 
+\item For each immediate concept, find the concept path from the root node to the current concept in the ontology.
+\item Merge all concept paths into a concept tree, represented by JSON or a Python dictionary.
+\end{enumerate}
+
+Generating section counts for each concept in the concept tree is realized by:
+\begin{enumerate}
+\item Initialize counts for all related concepts to be 0.
+\item For each document, retrieve all related concepts to the document and increment the counts for these concepts by 1.
+\end{enumerate}
+
+Python dictionary is the main data structure used to represent concept tree and concept path. There are instance methods in the class \texttt{ConceptDictionaryGenerator} for specific steps above.

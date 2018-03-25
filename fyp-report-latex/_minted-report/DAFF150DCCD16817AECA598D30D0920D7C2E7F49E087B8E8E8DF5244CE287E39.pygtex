@@ -1,0 +1,57 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from} \PYG{n+nn}{django.db} \PYG{k+kn}{import} \PYG{n}{models}
+\PYG{k+kn}{from} \PYG{n+nn}{treebeard.mp\PYGZus{}tree} \PYG{k+kn}{import} \PYG{n}{MP\PYGZus{}Node}
+\PYG{k+kn}{from} \PYG{n+nn}{django.core.validators} \PYG{k+kn}{import} \PYG{n}{validate\PYGZus{}comma\PYGZus{}separated\PYGZus{}integer\PYGZus{}list}
+
+
+\PYG{k}{class} \PYG{n+nc}{Book}\PYG{p}{(}\PYG{n}{models}\PYG{o}{.}\PYG{n}{Model}\PYG{p}{):}
+    \PYG{n}{book\PYGZus{}id} \PYG{o}{=} \PYG{n}{models}\PYG{o}{.}\PYG{n}{IntegerField}\PYG{p}{(}\PYG{n}{primary\PYGZus{}key}\PYG{o}{=}\PYG{n+nb+bp}{True}\PYG{p}{)}
+    \PYG{n}{title} \PYG{o}{=} \PYG{n}{models}\PYG{o}{.}\PYG{n}{CharField}\PYG{p}{(}\PYG{n}{max\PYGZus{}length}\PYG{o}{=}\PYG{l+m+mi}{255}\PYG{p}{)}
+    \PYG{n}{pages} \PYG{o}{=} \PYG{n}{models}\PYG{o}{.}\PYG{n}{IntegerField}\PYG{p}{()}
+    \PYG{n}{pdf} \PYG{o}{=} \PYG{n}{models}\PYG{o}{.}\PYG{n}{CharField}\PYG{p}{(}\PYG{n}{max\PYGZus{}length}\PYG{o}{=}\PYG{l+m+mi}{100}\PYG{p}{)}
+
+    \PYG{k}{def} \PYG{n+nf}{\PYGZus{}\PYGZus{}str\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{k}{return} \PYG{l+s+s2}{\PYGZdq{}book \PYGZob{}id\PYGZcb{}: \PYGZob{}title\PYGZcb{}\PYGZdq{}}\PYGZbs{}
+            \PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n+nb}{id}\PYG{o}{=}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{book\PYGZus{}id}\PYG{p}{,} \PYG{n}{title}\PYG{o}{=}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{title}\PYG{p}{)}
+
+
+\PYG{k}{class} \PYG{n+nc}{Section}\PYG{p}{(}\PYG{n}{models}\PYG{o}{.}\PYG{n}{Model}\PYG{p}{):}
+    \PYG{n}{section\PYGZus{}id} \PYG{o}{=} \PYG{n}{models}\PYG{o}{.}\PYG{n}{IntegerField}\PYG{p}{(}\PYG{n}{primary\PYGZus{}key}\PYG{o}{=}\PYG{n+nb+bp}{True}\PYG{p}{)}
+    \PYG{n}{title} \PYG{o}{=} \PYG{n}{models}\PYG{o}{.}\PYG{n}{CharField}\PYG{p}{(}\PYG{n}{max\PYGZus{}length}\PYG{o}{=}\PYG{l+m+mi}{255}\PYG{p}{)}
+    \PYG{n}{text} \PYG{o}{=} \PYG{n}{models}\PYG{o}{.}\PYG{n}{TextField}\PYG{p}{()}
+    \PYG{n}{book} \PYG{o}{=} \PYG{n}{models}\PYG{o}{.}\PYG{n}{ForeignKey}\PYG{p}{(}\PYG{n}{Book}\PYG{p}{,} \PYG{n}{on\PYGZus{}delete}\PYG{o}{=}\PYG{n}{models}\PYG{o}{.}\PYG{n}{CASCADE}\PYG{p}{)}
+    \PYG{n}{page} \PYG{o}{=} \PYG{n}{models}\PYG{o}{.}\PYG{n}{IntegerField}\PYG{p}{()}
+    \PYG{n}{pdf} \PYG{o}{=} \PYG{n}{models}\PYG{o}{.}\PYG{n}{CharField}\PYG{p}{(}\PYG{n}{max\PYGZus{}length}\PYG{o}{=}\PYG{l+m+mi}{100}\PYG{p}{)}
+
+    \PYG{k}{def} \PYG{n+nf}{\PYGZus{}\PYGZus{}str\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{k}{return} \PYG{l+s+s2}{\PYGZdq{}section \PYGZob{}id\PYGZcb{}: \PYGZob{}title\PYGZcb{}\PYGZdq{}}\PYGZbs{}
+            \PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n+nb}{id}\PYG{o}{=}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{section\PYGZus{}id}\PYG{p}{,} \PYG{n}{title}\PYG{o}{=}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{title}\PYG{p}{)}
+
+
+\PYG{k}{class} \PYG{n+nc}{Concept}\PYG{p}{(}\PYG{n}{MP\PYGZus{}Node}\PYG{p}{):}
+    \PYG{n}{label} \PYG{o}{=} \PYG{n}{models}\PYG{o}{.}\PYG{n}{CharField}\PYG{p}{(}\PYG{n}{max\PYGZus{}length}\PYG{o}{=}\PYG{l+m+mi}{20}\PYG{p}{,} \PYG{n}{unique}\PYG{o}{=}\PYG{n+nb+bp}{True}\PYG{p}{)}
+    \PYG{n}{name} \PYG{o}{=} \PYG{n}{models}\PYG{o}{.}\PYG{n}{CharField}\PYG{p}{(}\PYG{n}{max\PYGZus{}length}\PYG{o}{=}\PYG{l+m+mi}{255}\PYG{p}{)}
+
+    \PYG{n}{node\PYGZus{}order\PYGZus{}by} \PYG{o}{=} \PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}label\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}name\PYGZsq{}}\PYG{p}{]}
+
+    \PYG{k}{def} \PYG{n+nf}{\PYGZus{}\PYGZus{}str\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{k}{return} \PYG{l+s+s2}{\PYGZdq{}\PYGZob{}0\PYGZcb{} \PYGZob{}1\PYGZcb{}\PYGZdq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{label}\PYG{p}{,} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{name}\PYG{p}{)}
+
+
+\PYG{k}{class} \PYG{n+nc}{ConceptMapping}\PYG{p}{(}\PYG{n}{models}\PYG{o}{.}\PYG{n}{Model}\PYG{p}{):}
+    \PYG{n}{concept} \PYG{o}{=} \PYG{n}{models}\PYG{o}{.}\PYG{n}{ForeignKey}\PYG{p}{(}\PYG{n}{Concept}\PYG{p}{,} \PYG{n}{on\PYGZus{}delete}\PYG{o}{=}\PYG{n}{models}\PYG{o}{.}\PYG{n}{CASCADE}\PYG{p}{)}
+    \PYG{n}{term} \PYG{o}{=} \PYG{n}{models}\PYG{o}{.}\PYG{n}{CharField}\PYG{p}{(}\PYG{n}{max\PYGZus{}length}\PYG{o}{=}\PYG{l+m+mi}{255}\PYG{p}{)}
+    \PYG{n}{section} \PYG{o}{=} \PYG{n}{models}\PYG{o}{.}\PYG{n}{ForeignKey}\PYG{p}{(}\PYG{n}{Section}\PYG{p}{,} \PYG{n}{on\PYGZus{}delete}\PYG{o}{=}\PYG{n}{models}\PYG{o}{.}\PYG{n}{CASCADE}\PYG{p}{)}
+    \PYG{n}{nth\PYGZus{}match} \PYG{o}{=} \PYG{n}{models}\PYG{o}{.}\PYG{n}{CharField}\PYG{p}{(}\PYG{n}{max\PYGZus{}length}\PYG{o}{=}\PYG{l+m+mi}{100}\PYG{p}{,}
+                \PYG{n}{validators}\PYG{o}{=}\PYG{p}{[}\PYG{n}{validate\PYGZus{}comma\PYGZus{}separated\PYGZus{}integer\PYGZus{}list}\PYG{p}{])}
+
+    \PYG{k}{def} \PYG{n+nf}{\PYGZus{}\PYGZus{}str\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{k}{return} \PYG{l+s+s2}{\PYGZdq{}concept mapping: (\PYGZob{}sid\PYGZcb{}, \PYGZob{}nth\PYGZcb{}, \PYGZob{}term\PYGZcb{})\PYGZhy{}\PYGZgt{}\PYGZob{}concept\PYGZcb{}\PYGZdq{}}\PYGZbs{}
+            \PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{sid}\PYG{o}{=}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{section}\PYG{o}{.}\PYG{n}{section\PYGZus{}id}\PYG{p}{,}
+                    \PYG{n}{nth}\PYG{o}{=}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{nth\PYGZus{}match}\PYG{p}{,}
+                    \PYG{n}{term}\PYG{o}{=}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{term}\PYG{p}{,}
+                    \PYG{n}{concept}\PYG{o}{=}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{concept}\PYG{o}{.}\PYG{n}{name}\PYG{p}{)}
+
+    \PYG{k}{class} \PYG{n+nc}{Meta}\PYG{p}{:}
+        \PYG{n}{unique\PYGZus{}together} \PYG{o}{=} \PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}concept\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}section\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}term\PYGZsq{}}\PYG{p}{,)}
+\end{Verbatim}

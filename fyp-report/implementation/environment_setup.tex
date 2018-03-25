@@ -1,0 +1,31 @@
+\section{Environment Setup}
+The IR web application was developed on Windows 10. Solr, Redis server, MySQL database were hosted in an Ubuntu (16.04) virtual machine.
+
+The programming languages used for the implementation of the IR web application are: Python (3.5.1), JavaScript (1.7), HTML5, and CSS3.
+
+Table \ref{tbl:tech_ver} lists the versions for the technology stack introduced in Section \ref{sec:tech_stack}. Note that the latest Solr version supported by Haystack (2.5.1) is 4.10.2. Celery 3.1 was the latest version that supports Windows at the time of development.
+
+\begin{table}[!htbp]
+\centering
+\begingroup
+\renewcommand{\arraystretch}{1.2}
+\caption{Technology Stack and Versions}
+\label{tbl:tech_ver}
+\begin{tabular}{ll}
+\toprule
+\multicolumn{1}{c}{\textbf{Technology}}  & \multicolumn{1}{c}{\textbf{Version}} \\ \midrule
+Django           & 1.10.4                  \\
+MySQL            & 5.7.16-0ubuntu0.16.04.1 \\
+Celery           & 3.1.18                  \\
+Redis            & 3.2.6                   \\
+Solr             & 4.10.2                  \\
+Haystack         & 2.5.1                   \\
+Django-Treebeard & 4.1.0                   \\
+PDF.js           & 1.5.188                 \\
+jQuery           & 3.1.1                   \\ 
+Bootstrap        & 3.3.7                   \\ \bottomrule
+\end{tabular}
+\endgroup
+\end{table}
+
+The source code is hosted in \url{https://github.com/HarveyLeo/myfyp}. Readers may refer to the detailed environment setup procedures in Appendix \ref{appendix:env_setup}. 

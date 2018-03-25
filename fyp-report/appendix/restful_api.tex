@@ -1,0 +1,38 @@
+\begin{landscape}
+\chapter{RESTful API of Document Server}
+\label{appendix:api}
+\begin{longtable}{m{2cm} m{2cm} l l l p{7cm}}
+\toprule
+\multicolumn{1}{c}{\textbf{Group}} & \multicolumn{1}{c}{\textbf{Parent URL}} & \multicolumn{1}{c}{\textbf{Endpoint}} & \multicolumn{1}{c}{\textbf{Child URL}} & \multicolumn{1}{c}{\textbf{Method}} & \multicolumn{1}{c}{\textbf{Description}} \\ 
+\midrule
+\endfirsthead
+\multicolumn{6}{l}{Continued from previous page} \\\\
+\endhead
+
+\\ \multicolumn{6}{l}{Continued on next page}
+\endfoot
+\endlastfoot
+
+\multirow{3}{*}{Book} & \multirow{3}{*}{/book} & List & /list & GET & List all the e-books. Each book contains book ID, book title, and ID of the root section. \\ \cline{3-6} 
+ & & Detail & /detail/\{pk\}/ & GET & Return details of a book specified by \{pk\} (i.e. book ID), including book ID, book title, and ID of the root section. \\ \cline{3-6} 
+ & & TOC & /toc/\{pk\}/ & GET & Return the table of contents of a book specified by \{pk\}. It is a nested and recursive JSON that represents the table of contents tree. \\ \cline{3-6}
+ & & PDF & /read/\{pk\}/[\{start\}/\{end\}/] & GET & Display the PDF of the book specified by \{pk\}, starting from page specified by \{start\} and ending with page specified by \{end\}. If no starting and ending pages are specified, it will return the whole book in PDF. \\ \hline
+ 
+\multirow{4}{*}{Section} & \multirow{4}{*}{/section} & Detail & /detail/\{pk\}/ & GET & Return details of a section specified by \{pk\} (i.e. section ID), including section ID, section title, and a Boolean value specifying whether the section has child sections. \\ \cline{3-6} 
+ & & Children & /children/\{pk\}/ & GET & Return section details for all child sections of a section specified by \{pk\}. \\ \cline{3-6} 
+ & & Versions & /versions/\{pk\}/ & GET & Return an array of all the versions associated with the section specified by \{pk\}. \\ \cline{3-6} 
+ & & Partial TOC & /toc/\{pk\}/ & GET & Return the partial TOC starting from the section specified by \{pk\}. \\ \hline
+ 
+\multirow{5}{*}{Version} & \multirow{5}{*}{/version} & List & /list & GET & List all the versions. Each version contains version ID, version name, version creator, and timestamp. \\ \cline{3-6} 
+ & & Detail & /detail/\{pk\}/ & GET & Return details of a version specified by \{pk\} (i.e. version ID), including version ID, version name, version creator, and timestamp. \\ \cline{3-6} 
+ &  & Create & /create/ & PUT & Create a new version. Only version name needs to be specified by user.\\ \cline{3-6} 
+ & & Update & /update/\{pk\}/ & POST & Update version name of the version specified by \{pk\}. \\ \cline{3-6} 
+ & & Delete & /delete/\{pk\}/ & DELETE & Delete a version specified by \{pk\}. \\ \hline
+ 
+\multirow{3}{*}{Content} & \multirow{3}{*}{/content} & Immediate Text    & /immediate/\{section\}/{[}\{version\}/{]} & GET & Return the text of a certain version specified by \{version\} (i.e. version ID) of a section specified by \{section\} (i.e. section ID). If no version is specified, the raw version will be chosen by default.  \\ \cline{3-6} 
+ &  & Aggregate Text & /aggregate/\{section\}/\{version\}/  & GET & Return the text of a certain version specified by \{version\} (i.e. version ID) of a section specified by \{section\} (i.e. section ID) and its all descendants. If no version is specified, the raw version will be chosen by default. \\ \cline{3-6} 
+ &  & Post  & /post/\{section\}/\{version\}/  & POST  & The body of the request contains the location of the text file with content of a specific version, specified by \{version\}, of a section, specified by \{section\}. \\ \bottomrule
+ 
+\end{longtable}
+\end{landscape}
+

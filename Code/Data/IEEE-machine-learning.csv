@@ -1,8 +1,0 @@
-Title,Abstract,Keywords
-Data Mining and Analytics in the Process Industry: the Role of Machine Learning,"Data mining and analytics have played an important role in knowledge discovery and decision making/supports in the process industry over the past several decades. As a computa-tional engine to data mining and analytics, machine learning serves as basic tools for information extraction, data pattern recognition and predictions. From the perspective of machine learning, this paper provides a review on existing data mining and analytics applications in the process industry over the past several decades. The state-of-the-art of data mining and analytics are reviewed through eight unsupervised learning and ten supervised learning algorithms, as well as the application status of semi-supervised learning algorithms. Several perspectives are highlighted and discussed for future researches on data mining and analytics in the process industry.","Data mining,
-Industries,
-Data models,
-Machine learning algorithms,
-Analytical models,
-Manufacturing,
-Predictive models"

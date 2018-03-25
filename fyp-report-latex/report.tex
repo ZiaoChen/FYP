@@ -1,0 +1,91 @@
+\documentclass[pdftex,12pt,a4paper]{report}
+
+\usepackage[top=3cm, bottom=3cm, left=3.5cm, right=3.5cm]{geometry}
+\usepackage{minted}
+% graphics images
+\usepackage[pdftex]{graphicx}
+\usepackage[toc,page]{appendix}
+\usepackage{subcaption}
+
+% 1.5 line spacing
+\usepackage{setspace}
+\usepackage{tabu}
+\usepackage{tabularx}
+\onehalfspacing
+% maths symbols
+\usepackage{amsmath}
+
+% table packages
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{pdflscape}
+\usepackage{booktabs}
+\setlength\heavyrulewidth{0.5ex}
+\setlength\lightrulewidth{0.25ex}
+
+% citation style
+\usepackage[square,sort,comma,numbers]{natbib}
+\usepackage{amsfonts}
+
+
+\usepackage{tikz,colortbl}
+\usetikzlibrary{calc}
+\usepackage{zref-savepos}
+
+\usepackage[tableposition=top]{caption}
+% \usepackage{subfig}
+% \usepackage{float}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{csquotes}
+
+\usepackage{upquote}
+
+
+\begin{document}
+
+% primary cover page
+\input{cover_page.tex}
+
+% secondary cover page
+\input{subcover_page.tex}
+
+% abstract
+\setcounter{page}{1}
+\pagenumbering{roman}
+\input{abstract.tex}
+
+% acknowledgement
+\input{acknowledgements.tex}
+
+% table of content
+\tableofcontents
+\addcontentsline{toc}{chapter}{Contents}
+
+% list of tables
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
+
+% list of figures
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+
+% chapters
+\cleardoublepage
+\pagenumbering{arabic}
+\input{introduction/main.tex}
+\input{literature_review/main.tex}
+\input{proposed_methodology_and_system_specifications/main.tex}
+\input{implementation/main.tex}
+\input{system_demonstration/main.tex}
+\input{conclusions_and_future_work/main.tex}
+
+% bibliography
+\bibliographystyle{unsrtnat}
+\bibliography{bibliography/main.bib}
+
+% appendix
+\input{appendix/main.tex}
+
+\end{document}

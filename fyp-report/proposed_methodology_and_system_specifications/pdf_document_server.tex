@@ -1,0 +1,33 @@
+\section{Document Server}
+\subsection{Introduction}
+In this thesis, a \textit{document} is defined as a section of a book, which may be contained within other sections of the same book. Each section has a title and may or may not have parent or child sections. Document Server refers to the server set up for storing and retrieving of PDF, processed text, and meta-data of these sections. The meta-data of a section includes the section title, the book that the section is in, the start page from which the section starts, its previous and next sections, its parent section, and whether it has a child section. The Document Server allows users to:
+\begin{itemize}
+\item Store data extracted from PDF e-books in a relational database, including text and meta-data of each section;
+\item Retrieve a specified version of processed text for a section;
+\item Post a new version of processed text to the relational database;
+\item Retrieve meta-data of a section;
+\item Retrieve a PDF file by specifying start page and end page.
+\end{itemize}
+
+\subsection{Text Extraction from PDF}
+As mentioned, documents for the proposed information retrieval system are essentially sections of e-books. Thus, we need a way to identify each section of an e-book and then extract section text.
+
+The table of contents of each e-book can serve to identify all sections. The bookmarks in PDF are corrected based on table of contents. These bookmarks are used as references to extract text for each section.
+
+Adobe Acrobat DC was used to correct bookmarks in PDF and convert PDF into HTML. The PDF text is converted into HTML so that the text can be further preprocessed and indexed. The extracted text and meta-data are stored into the relational database.
+
+Adobe Acrobat DC is packed with the tools that enable users to create, edit, print, manage, comment, review, and sign PDF documents in a reliable, consistent manner. Adobe Acrobat DC 15.0 was used for the file operations above.
+
+\subsection{RESTful API for Versioning Data}
+A RESTful API is an Application Program Interface (API) that uses HTTP requests to GET, PUT, POST and DELETE data. It is based on Representational State Transfer (REST) technology, an approach to communications often used in web services development.
+
+An application\footnote{This application had been developed by the undergraduate student Sun Ximeng when the author started the project.} has been developed to allow users to manage and maintain a huge database of text extracted from PDF e-books and to access and upload data to the Document Server through RESTful API. This enables easy sharing of text data and boosts collaboration among  researchers in a team or across teams.
+
+For example, users may access processed text of a particular version via GET request, further process it, and then upload to the Document Server with a new version via POST request. Users may also read a PDF file by specifying start page and end page via GET request.
+
+The available API for document data are listed in Appendix \ref{appendix:api}. For details on the source code, readers may access the GitHub repository \url{https://github.com/nathanielove/pdf-server}.
+
+A Python client library has also been developed to provide a more pleasant experience to access the RESTful API. For more details, readers may check out the GitHub repository \url{https://github.com/nathanielove/pdf-client}.
+
+
+

@@ -1,0 +1,139 @@
+\begin{thebibliography}{23}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[IBM()]{IBMBigData}
+What is big data?
+\newblock
+  \url{https://www-01.ibm.com/software/data/bigdata/what-is-big-data.html}.
+\newblock [Online; accessed 5-Mar-2017].
+
+\bibitem[Shenk(1997)]{Shenk1997}
+David Shenk.
+\newblock \emph{Data smog : surviving the information glut}.
+\newblock HarperCollins Publishers, 1997.
+\newblock ISBN 00601870189780060187019.
+
+\bibitem[Dean and Webb(2011)]{Dean2011}
+Derek Dean and Caroline Webb.
+\newblock Recovering from information overload.
+\newblock
+  \url{http://www.mckinsey.com/business-functions/organization/our-insights/recovering-from-information-overload},
+  January 2011.
+\newblock [Online; accessed 5-Mar-2017].
+
+\bibitem[Kapoor and Sharma(2010)]{Kapoor2010}
+Bhaskar Kapoor and Savita Sharma.
+\newblock A comparative study ontology building tools for semantic web
+  applications.
+\newblock \emph{International journal of Web \& Semantic Technology},
+  1\penalty0 (3), July 2010.
+
+\bibitem[Berners-Lee et~al.(2001)Berners-Lee, Hendler, and
+  Lassila]{Berners-Lee2001}
+Tim Berners-Lee, James Hendler, and Ora Lassila.
+\newblock The semantic web.
+\newblock \emph{Scientific American Magazine}, 2001.
+
+\bibitem[Gruber(1993)]{Gruber1993}
+Thomas~R. Gruber.
+\newblock A translation approach to portable ontology specifications.
+\newblock \emph{Knowledge Acquisition}, 5\penalty0 (2):\penalty0 199--220,
+  1993.
+
+\bibitem[Ont(2015)]{OntologyEditor}
+Ontology editors.
+\newblock \url{https://www.w3.org/wiki/Ontology_editors}, February 2015.
+\newblock [Online; accessed 6-Mar-2017].
+
+\bibitem[OWL(2012)]{OWL2012}
+Web ontology language (owl).
+\newblock \url{https://www.w3.org/2001/sw/wiki/OWL}, December 2012.
+\newblock [Online; accessed 6-Mar-2017].
+
+\bibitem[Delfs et~al.(2005)Delfs, Doms, Kozlenkov, and Schroeder]{Delfs2005}
+Ralph Delfs, Andreas Doms, Alexander Kozlenkov, and Michael Schroeder.
+\newblock Gopubmed: ontology-based literature search applied to gene ontology
+  and pubmed.
+\newblock \emph{Nucleic Acids Research}, July 2005.
+\newblock \doi{10.1093/nar/gki470}.
+
+\bibitem[Salton and Buckley(1988)]{Salton1988}
+Gerard Salton and Christopher Buckley.
+\newblock Term-weighting approaches in automatic text retrieval.
+\newblock \emph{Information Processing and Management}, 24\penalty0
+  (5):\penalty0 513--523, 1988.
+
+\bibitem[Boubekeur and Azzoug(2013)]{Boubekeur2013}
+Fatiha Boubekeur and Wassila Azzoug.
+\newblock Concept-based indexing in text information retrieval.
+\newblock \emph{International Journal of Computer Science \& Information
+  Technology}, 5\penalty0 (1), February 2013.
+
+\bibitem[Manning et~al.(2008)Manning, Raghavan, and Schütze]{Manning2008}
+Christopher~D. Manning, Prabhakar Raghavan, and Hinrich Schütze.
+\newblock \emph{Introduction to Information Retrieval}.
+\newblock Cambridge University Press, 2008.
+\newblock ISBN 9780521865715.
+
+\bibitem[Dja({\natexlab{a}})]{Django}
+Why django?
+\newblock \url{https://www.djangoproject.com/start/overview/}, {\natexlab{a}}.
+\newblock [Online; accessed 13-Mar-2017].
+
+\bibitem[Dja({\natexlab{b}})]{DjangoApp}
+Writing your first django app, part 1.
+\newblock \url{https://docs.djangoproject.com/en/1.10/intro/tutorial01/},
+  {\natexlab{b}}.
+\newblock [Online; accessed 15-Mar-2017].
+
+\bibitem[Cel()]{Celery}
+Celery - distributed task queue.
+\newblock \url{http://docs.celeryproject.org/en/3.1/}.
+\newblock [Online; accessed 15-Mar-2017].
+
+\bibitem[Red()]{Redis}
+Introduction to redis.
+\newblock \url{https://redis.io/topics/introduction}.
+\newblock [Online; accessed 15-Mar-2017].
+
+\bibitem[Sol()]{Solr}
+Solr.
+\newblock \url{http://lucene.apache.org/solr/}.
+\newblock [Online; accessed 15-Mar-2017].
+
+\bibitem[Dja({\natexlab{c}})]{DjangoModels}
+Models.
+\newblock \url{https://docs.djangoproject.com/en/1.10/topics/db/models/},
+  {\natexlab{c}}.
+\newblock [Online; accessed 13-Mar-2017].
+
+\bibitem[Hay()]{Haystack}
+Welcome to haystack!
+\newblock \url{http://django-haystack.readthedocs.io/en/v2.5.1/}.
+\newblock [Online; accessed 15-Mar-2017].
+
+\bibitem[Tre()]{Treebeard}
+django-treebeard.
+\newblock \url{http://django-treebeard.readthedocs.io/en/latest/index.html}.
+\newblock [Online; accessed 15-Mar-2017].
+
+\bibitem[PDF({\natexlab{a}})]{PDFjsDoc}
+Pdf.js.
+\newblock \url{https://mozilla.github.io/pdf.js/}, {\natexlab{a}}.
+\newblock [Online; accessed 15-Mar-2017].
+
+\bibitem[PDF({\natexlab{b}})]{PDFjsWiki}
+Pdf.js.
+\newblock \url{https://en.wikipedia.org/wiki/PDF.js}, {\natexlab{b}}.
+\newblock [Online; accessed 15-Mar-2017].
+
+\bibitem[jQu()]{jQuery}
+jquery.
+\newblock \url{https://jquery.com/}.
+\newblock [Online; accessed 15-Mar-2017].
+
+\end{thebibliography}

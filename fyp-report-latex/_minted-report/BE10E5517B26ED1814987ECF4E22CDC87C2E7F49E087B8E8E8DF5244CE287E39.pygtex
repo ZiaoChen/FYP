@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from} \PYG{n+nn}{dsp\PYGZus{}index.models} \PYG{k+kn}{import} \PYG{n}{Concept}
+\PYG{n}{get} \PYG{o}{=} \PYG{k}{lambda} \PYG{n}{node\PYGZus{}id}\PYG{p}{:} \PYG{n}{Concept}\PYG{o}{.}\PYG{n}{objects}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{n}{pk}\PYG{o}{=}\PYG{n}{node\PYGZus{}id}\PYG{p}{)}
+\PYG{n}{root} \PYG{o}{=} \PYG{n}{Concept}\PYG{o}{.}\PYG{n}{add\PYGZus{}root}\PYG{p}{(}\PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}0\PYGZsq{}}\PYG{p}{,} \PYG{n}{name}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Digital Signal Processing\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{get}\PYG{p}{(}\PYG{n}{root}\PYG{o}{.}\PYG{n}{pk}\PYG{p}{)}\PYG{o}{.}\PYG{n}{add\PYGZus{}child}\PYG{p}{(}\PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}1\PYGZsq{}}\PYG{p}{,} \PYG{n}{name}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Signal Sampling\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{node2} \PYG{o}{=} \PYG{n}{get}\PYG{p}{(}\PYG{n}{root}\PYG{o}{.}\PYG{n}{pk}\PYG{p}{)}\PYG{o}{.}\PYG{n}{add\PYGZus{}child}\PYG{p}{(}\PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}2\PYGZsq{}}\PYG{p}{,} \PYG{n}{name}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Transform\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{node3} \PYG{o}{=} \PYG{n}{get}\PYG{p}{(}\PYG{n}{root}\PYG{o}{.}\PYG{n}{pk}\PYG{p}{)}\PYG{o}{.}\PYG{n}{add\PYGZus{}child}\PYG{p}{(}\PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}3\PYGZsq{}}\PYG{p}{,} \PYG{n}{name}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Filter\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{get}\PYG{p}{(}\PYG{n}{node2}\PYG{o}{.}\PYG{n}{pk}\PYG{p}{)}\PYG{o}{.}\PYG{n}{add\PYGZus{}child}\PYG{p}{(}\PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}2.1\PYGZsq{}}\PYG{p}{,} \PYG{n}{name}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Z\PYGZhy{}Transform\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{get}\PYG{p}{(}\PYG{n}{node2}\PYG{o}{.}\PYG{n}{pk}\PYG{p}{)}\PYG{o}{.}\PYG{n}{add\PYGZus{}child}\PYG{p}{(}\PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}2.2\PYGZsq{}}\PYG{p}{,} \PYG{n}{name}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Fourier Transform\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{get}\PYG{p}{(}\PYG{n}{node2}\PYG{o}{.}\PYG{n}{pk}\PYG{p}{)}\PYG{o}{.}\PYG{n}{add\PYGZus{}child}\PYG{p}{(}\PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}2.3\PYGZsq{}}\PYG{p}{,} \PYG{n}{name}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Laplace Transform\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{node31} \PYG{o}{=} \PYG{n}{get}\PYG{p}{(}\PYG{n}{node3}\PYG{o}{.}\PYG{n}{pk}\PYG{p}{)}\PYG{o}{.}\PYG{n}{add\PYGZus{}child}\PYG{p}{(}\PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}3.1\PYGZsq{}}\PYG{p}{,}
+                                 \PYG{n}{name}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Finite\PYGZhy{}Impulse Response Filter\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{node32} \PYG{o}{=} \PYG{n}{get}\PYG{p}{(}\PYG{n}{node3}\PYG{o}{.}\PYG{n}{pk}\PYG{p}{)}\PYG{o}{.}\PYG{n}{add\PYGZus{}child}\PYG{p}{(}\PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}3.2\PYGZsq{}}\PYG{p}{,}
+                                 \PYG{n}{name}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Infinite\PYGZhy{}Impulse Response Filter\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{get}\PYG{p}{(}\PYG{n}{node31}\PYG{o}{.}\PYG{n}{pk}\PYG{p}{)}\PYG{o}{.}\PYG{n}{add\PYGZus{}child}\PYG{p}{(}\PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}3.1.1\PYGZsq{}}\PYG{p}{,} \PYG{n}{name}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Moving Average Filter\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{get}\PYG{p}{(}\PYG{n}{node32}\PYG{o}{.}\PYG{n}{pk}\PYG{p}{)}\PYG{o}{.}\PYG{n}{add\PYGZus{}child}\PYG{p}{(}\PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}3.2.1\PYGZsq{}}\PYG{p}{,} \PYG{n}{name}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Butterworth Filter\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{get}\PYG{p}{(}\PYG{n}{node32}\PYG{o}{.}\PYG{n}{pk}\PYG{p}{)}\PYG{o}{.}\PYG{n}{add\PYGZus{}child}\PYG{p}{(}\PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}3.2.2\PYGZsq{}}\PYG{p}{,} \PYG{n}{name}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Elliptic Filter\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{get}\PYG{p}{(}\PYG{n}{node32}\PYG{o}{.}\PYG{n}{pk}\PYG{p}{)}\PYG{o}{.}\PYG{n}{add\PYGZus{}child}\PYG{p}{(}\PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}3.2.3\PYGZsq{}}\PYG{p}{,} \PYG{n}{name}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Chebyshev Filter\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{Concept}\PYG{o}{.}\PYG{n}{dump\PYGZus{}bulk}\PYG{p}{()}
+\end{Verbatim}

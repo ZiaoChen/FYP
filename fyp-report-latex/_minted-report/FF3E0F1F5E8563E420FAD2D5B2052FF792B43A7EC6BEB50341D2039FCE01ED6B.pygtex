@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZlt{}}\PYG{n+nt}{script}\PYG{p}{\PYGZgt{}}
+  \PYG{n+nx}{pdfjsWebLibs}\PYG{p}{.}\PYG{n+nx}{pdfjsWebApp}\PYG{p}{.}\PYG{n+nx}{PDFViewerApplication}\PYG{p}{.}\PYG{n+nx}{open}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZob{}\PYGZob{} pdf\PYGZus{}url \PYGZcb{}\PYGZcb{}\PYGZsq{}}\PYG{p}{);}
+\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{script}\PYG{p}{\PYGZgt{}}
+\end{Verbatim}

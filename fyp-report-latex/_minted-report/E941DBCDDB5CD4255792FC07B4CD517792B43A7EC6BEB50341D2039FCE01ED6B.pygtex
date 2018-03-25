@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZlt{}}\PYG{n+nt}{object} \PYG{n+na}{id}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}pdf\PYGZhy{}viewer\PYGZdq{}}
+        \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}well\PYGZdq{}}
+        \PYG{n+na}{type}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}text/html\PYGZdq{}}
+        \PYG{n+na}{data}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}\PYGZob{}\PYGZpc{} url \PYGZsq{}pdf\PYGZus{}viewer\PYGZsq{} book=book\PYGZus{}id section=section\PYGZus{}id \PYGZpc{}\PYGZcb{}\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{object}\PYG{p}{\PYGZgt{}}
+\end{Verbatim}

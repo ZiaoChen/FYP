@@ -1,0 +1,36 @@
+\chapter{Ontology Creation via Python Shell}
+\label{appendix:onto_create}
+
+Since there is no existing DSP ontology yet, you may manually create a simplified ontology in the MySQL database via Python shell.
+
+Set up the development environment as described in Appendix \ref{appendix:env_setup}. Change the working virtual environment to the one you created during environment setup. Enter Python shell by running the following command in PyCharm Terminal:
+\begin{verbatim}
+python manage.py shell
+\end{verbatim}
+
+Create an ontology with 13 hierarchical concepts in the MySQL database with the following script:
+
+\begin{minted}{python}
+from dsp_index.models import Concept
+get = lambda node_id: Concept.objects.get(pk=node_id)
+root = Concept.add_root(label='0', name='Digital Signal Processing')
+get(root.pk).add_child(label='1', name='Signal Sampling')
+node2 = get(root.pk).add_child(label='2', name='Transform')
+node3 = get(root.pk).add_child(label='3', name='Filter')
+get(node2.pk).add_child(label='2.1', name='Z-Transform')
+get(node2.pk).add_child(label='2.2', name='Fourier Transform')
+get(node2.pk).add_child(label='2.3', name='Laplace Transform')
+node31 = get(node3.pk).add_child(label='3.1', 
+                                 name='Finite-Impulse Response Filter')
+node32 = get(node3.pk).add_child(label='3.2', 	
+                                 name='Infinite-Impulse Response Filter')
+get(node31.pk).add_child(label='3.1.1', name='Moving Average Filter')
+get(node32.pk).add_child(label='3.2.1', name='Butterworth Filter')
+get(node32.pk).add_child(label='3.2.2', name='Elliptic Filter')
+get(node32.pk).add_child(label='3.2.3', name='Chebyshev Filter')
+Concept.dump_bulk()
+\end{minted}
+
+You may see the ontology just created by checking the table \texttt{Concepts} in the django-admin page. Now, you may create some term-to-concept mappings by adding entries to the table \texttt{Concept mappings} in the django-admin page.
+
+

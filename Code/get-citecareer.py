@@ -33,7 +33,6 @@ def getFile(serverString, command, verbose=1, sleepTime=0):
         print exValue
         if nRecoveries < maxRecoveries:
             nRecoveries += 1
-            return getFile(serverString, command, 1, 60)
         return
     nRawBytes += len(remoteData)
     try:

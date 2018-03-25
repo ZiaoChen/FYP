@@ -1,0 +1,13 @@
+\section{Term-to-Concept Mappings}
+Although design of concept recognition algorithm is not within the scope for this project, the output of concept recognition, i.e. term-to-concept mappings, is defined. Each mapping is a tuple - (\textit{Concept}, \textit{Term}, \textit{Section}, \textit{N-th match}). Each item in the tuple is explained below:
+
+\begin{itemize}
+\item \textbf{Concept:} A unique concept node in the ontology tree;
+\item \textbf{Section:} A document, namely a section of an e-book;
+\item \textbf{Term:} a word or a phrase in the Section;
+\item \textbf{\textit{N}-th match:} The \textit{n}-th occurrence of the Term in the Section.
+\end{itemize}
+
+The purpose of adopting \textit{n}-th match approach is to locate the exact term that is mapped to a particular concept in a PDF document. This is because sometimes same terms but in different locations may be mapped to different concepts. For example, suppose the term \enquote{bank} appears multiple times in a document. Some occurrences may be mapped to the concept \enquote{river side}, while the other may be mapped to the concept \enquote{financial organization}.
+
+A term in a document may be mapped to multiple concepts; inversely, a concept may also be mapped to multiple terms.

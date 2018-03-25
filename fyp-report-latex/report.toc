@@ -1,0 +1,101 @@
+\contentsline {chapter}{Abstract}{i}{chapter*.1}
+\contentsline {chapter}{Acknowledgments}{ii}{chapter*.2}
+\contentsline {chapter}{Contents}{vi}{chapter*.3}
+\contentsline {chapter}{List of Tables}{vii}{chapter*.4}
+\contentsline {chapter}{List of Figures}{viii}{chapter*.5}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Background}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Aims and Objectives}{2}{section.1.2}
+\contentsline {section}{\numberline {1.3}Scope}{2}{section.1.3}
+\contentsline {section}{\numberline {1.4}Report Organization}{2}{section.1.4}
+\contentsline {chapter}{\numberline {2}Literature Review}{4}{chapter.2}
+\contentsline {section}{\numberline {2.1}Concept Ontology}{4}{section.2.1}
+\contentsline {section}{\numberline {2.2}Case Study: GoPubMed}{5}{section.2.2}
+\contentsline {section}{\numberline {2.3}Keyword Search vs Concept Search}{5}{section.2.3}
+\contentsline {chapter}{\numberline {3}Proposed Methodology and System Specifications}{6}{chapter.3}
+\contentsline {section}{\numberline {3.1}Document Server}{6}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Introduction}{6}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Text Extraction from PDF}{6}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}RESTful API for Versioning Data}{7}{subsection.3.1.3}
+\contentsline {section}{\numberline {3.2}Normalization}{8}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Formula Removal}{8}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Solr Filters}{9}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.3}Term-to-Concept Mappings}{10}{section.3.3}
+\contentsline {section}{\numberline {3.4}System Architecture}{11}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Crawling and Indexing}{11}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Searching and Viewing}{12}{subsection.3.4.2}
+\contentsline {section}{\numberline {3.5}Technology Stack}{13}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Django}{13}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}MySQL}{13}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}Celery}{14}{subsection.3.5.3}
+\contentsline {subsection}{\numberline {3.5.4}Redis}{14}{subsection.3.5.4}
+\contentsline {subsection}{\numberline {3.5.5}Solr}{14}{subsection.3.5.5}
+\contentsline {subsection}{\numberline {3.5.6}HayStack}{15}{subsection.3.5.6}
+\contentsline {subsection}{\numberline {3.5.7}Django-Treebeard}{15}{subsection.3.5.7}
+\contentsline {subsection}{\numberline {3.5.8}PDF.js}{15}{subsection.3.5.8}
+\contentsline {subsection}{\numberline {3.5.9}jQuery}{16}{subsection.3.5.9}
+\contentsline {subsection}{\numberline {3.5.10}Bootstrap}{16}{subsection.3.5.10}
+\contentsline {chapter}{\numberline {4}Implementation}{17}{chapter.4}
+\contentsline {section}{\numberline {4.1}Environment Setup}{17}{section.4.1}
+\contentsline {section}{\numberline {4.2}Crawling}{18}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Django Models}{18}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Document Data}{18}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Ontology and Term-to-Concept Mappings}{19}{subsection.4.2.3}
+\contentsline {section}{\numberline {4.3}Indexing}{19}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Haystack \texttt {SearchIndex}}{19}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Index Building}{21}{subsection.4.3.2}
+\contentsline {section}{\numberline {4.4}Searching}{21}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Searching and Filtering}{21}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Search Results View}{22}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Concept Tree Generation for Search Results}{23}{subsection.4.4.3}
+\contentsline {section}{\numberline {4.5}Viewing}{24}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Section Details View}{24}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.2}PDF Viewer}{25}{subsection.4.5.2}
+\contentsline {subsection}{\numberline {4.5.3}Concept Tree Generation for a Section}{25}{subsection.4.5.3}
+\contentsline {subsection}{\numberline {4.5.4}Term Highlighting in PDF}{25}{subsection.4.5.4}
+\contentsline {subsubsection}{Retrieving (term, \textit {n}-th match) Pairs}{25}{section*.14}
+\contentsline {subsubsection}{Highlighting Terms in PDF}{26}{section*.15}
+\contentsline {chapter}{\numberline {5}System Demonstration}{28}{chapter.5}
+\contentsline {section}{\numberline {5.1}Overview}{28}{section.5.1}
+\contentsline {section}{\numberline {5.2}Crawling}{28}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Document Data}{28}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Ontology and Term-to-Concept Mappings}{29}{subsection.5.2.2}
+\contentsline {section}{\numberline {5.3}Indexing}{34}{section.5.3}
+\contentsline {section}{\numberline {5.4}Searching}{34}{section.5.4}
+\contentsline {section}{\numberline {5.5}Viewing}{38}{section.5.5}
+\contentsline {chapter}{\numberline {6}Conclusions and Future Work}{41}{chapter.6}
+\contentsline {section}{\numberline {6.1}Conclusions}{41}{section.6.1}
+\contentsline {section}{\numberline {6.2}Recommendations for Future Work}{41}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Ontology Development}{42}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Concept Recognition}{42}{subsection.6.2.2}
+\contentsline {subsection}{\numberline {6.2.3}Functionality Improvement}{42}{subsection.6.2.3}
+\contentsline {chapter}{Appendices}{46}{section*.32}
+\contentsline {chapter}{\numberline {A}RESTful API of Document Server}{47}{Appendix.a.A}
+\contentsline {chapter}{\numberline {B}Environment Setup for Application Development}{51}{Appendix.a.B}
+\contentsline {section}{\numberline {B.1}Install Ubuntu Virtual Machine}{51}{section.a.B.1}
+\contentsline {subsection}{\numberline {B.1.1}Install VirtualBox}{51}{subsection.a.B.1.1}
+\contentsline {subsection}{\numberline {B.1.2}Install Ubuntu}{51}{subsection.a.B.1.2}
+\contentsline {section}{\numberline {B.2}Host Solr, Redis, and MySQL in Ubuntu}{53}{section.a.B.2}
+\contentsline {subsection}{\numberline {B.2.1}Host Solr}{53}{subsection.a.B.2.1}
+\contentsline {subsection}{\numberline {B.2.2}Host Redis}{53}{subsection.a.B.2.2}
+\contentsline {subsection}{\numberline {B.2.3}Host MySQL}{54}{subsection.a.B.2.3}
+\contentsline {section}{\numberline {B.3}Create Python Virtual Environment in Windows}{54}{section.a.B.3}
+\contentsline {subsection}{\numberline {B.3.1}Install Python 3}{54}{subsection.a.B.3.1}
+\contentsline {subsection}{\numberline {B.3.2}Install Virtual Environment Packages}{55}{subsection.a.B.3.2}
+\contentsline {subsection}{\numberline {B.3.3}Create Python Virtual Environment}{55}{subsection.a.B.3.3}
+\contentsline {section}{\numberline {B.4}Clone Project from GitHub}{55}{section.a.B.4}
+\contentsline {subsection}{\numberline {B.4.1}Install Python IDE PyCharm}{55}{subsection.a.B.4.1}
+\contentsline {subsection}{\numberline {B.4.2}Install Git}{56}{subsection.a.B.4.2}
+\contentsline {subsection}{\numberline {B.4.3}Clone Project from GitHub}{56}{subsection.a.B.4.3}
+\contentsline {section}{\numberline {B.5}Install Required Python Packages}{56}{section.a.B.5}
+\contentsline {section}{\numberline {B.6}Configure Solr and MySQL}{56}{section.a.B.6}
+\contentsline {subsection}{\numberline {B.6.1}Update Ubuntu's IP Address in Settings}{56}{subsection.a.B.6.1}
+\contentsline {subsection}{\numberline {B.6.2}Configure Solr Schema}{57}{subsection.a.B.6.2}
+\contentsline {subsection}{\numberline {B.6.3}Configure MySQL Database}{57}{subsection.a.B.6.3}
+\contentsline {subsubsection}{Create Remote User Account and Database}{57}{section*.34}
+\contentsline {subsubsection}{Change to UTF-8 Encoding}{58}{section*.35}
+\contentsline {subsubsection}{Migrate Changes from Django Models}{58}{section*.36}
+\contentsline {section}{\numberline {B.7}Start All Servers}{58}{section.a.B.7}
+\contentsline {section}{\numberline {B.8}Access Webpages through Browsers}{59}{section.a.B.8}
+\contentsline {chapter}{\numberline {C}Django Models}{60}{Appendix.a.C}
+\contentsline {chapter}{\numberline {D}Ontology Creation via Python Shell}{62}{Appendix.a.D}

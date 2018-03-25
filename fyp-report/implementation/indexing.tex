@@ -1,0 +1,42 @@
+\section{Indexing}
+\subsection{Haystack \texttt{SearchIndex}}
+The Haystack configurations, including which search engine to use, are set in the project settings file (\path{myfyp/myfyp/settings.py}). 
+
+A search index module (\path{myfyp/dsp_index/search_indexes.py}) was built to define search index for each Django model. \texttt{SearchIndex} objects are the way Haystack determines what data should be placed in the search index and handles the flow of data into the search engine. Generally, a unique \texttt{SearchIndex} is created for each Django model that needs to be indexed. 
+
+A class named \texttt{SectionIndex} was created to correspond to the \texttt{Section} model. It inherits two Haystack built-in classes - \texttt{indexes.SearchIndex} and \texttt{indexes.Indexable}. Below is the code snippet.
+
+\begin{minted}{python}
+class SectionIndex(indexes.SearchIndex, indexes.Indexable):
+    text = indexes.CharField(document=True, use_template=True)
+    book = indexes.CharField(model_attr='book', faceted=True)
+    page = indexes.CharField(model_attr='page')
+    sid = indexes.CharField(model_attr='section_id')
+    # Add content_auto for autocomplete
+    content_auto = indexes.EdgeNgramField(model_attr='text')
+
+    def get_model(self):
+        return Section
+\end{minted}
+
+Every \texttt{SearchIndex} requires there be one (and only one) field with \texttt{document=True}. This indicates to both Haystack and the search engine about which field is the primary field for searching within.
+
+Additionally, we added \texttt{use\char`_template=True} on the \texttt{text} field. This allowed us to use a data template to build the document the search engine would index. The data template is located in \path{myfyp/dsp_index/templates/search/indexes/dsp_index/section_text.txt}. The template has the following 2 lines of code:
+\begin{verbatim}
+{{object.title|safe}}
+{{object.text}}
+\end{verbatim}
+
+As seen above, two fields in the \texttt{Section} model - \texttt{title} and \texttt{text} are indexed by the search engine Solr. The two fields correspond to \texttt{Title} and \texttt{Text} in the \texttt{Sections} table. The search results for a query, returned from Solr, is JSON-formated with fields defined in the \texttt{SectionIndex} class.
+
+\subsection{Index Building}
+\label{subsec:index_build}
+Haystack ships with a command to make index building easy. Once data are all crawled and stored into MySQL database, the index can be built in Solr by running the command:
+\begin{verbatim}
+python manage.py rebuild_index
+\end{verbatim}
+
+The \texttt{rebuild\char`_index} command would put data in the database into the Solr index. The index built can be subsequently updated with the command below:
+\begin{verbatim}
+python manage.py update_index
+\end{verbatim}

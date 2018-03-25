@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{search}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+    \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{} Override search() from parent class. \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{n}{to\PYGZus{}have} \PYG{o}{=} \PYG{n}{json}\PYG{o}{.}\PYG{n}{loads}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{with\PYGZus{}field}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}[]\PYGZsq{}}\PYG{p}{))}
+    \PYG{n}{not\PYGZus{}to\PYGZus{}have} \PYG{o}{=} \PYG{n}{json}\PYG{o}{.}\PYG{n}{loads}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{without\PYGZus{}field}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}[]\PYGZsq{}}\PYG{p}{))}
+    \PYG{n}{sqs} \PYG{o}{=} \PYG{n+nb}{super}\PYG{p}{(}\PYG{n}{SectionSearchForm}\PYG{p}{,} \PYG{n+nb+bp}{self}\PYG{p}{)}\PYG{o}{.}\PYG{n}{search}\PYG{p}{()}\PYG{o}{.}\PYG{n}{models}\PYG{p}{(}\PYG{n}{Section}\PYG{p}{)}
+    \PYG{n}{to\PYGZus{}remove} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{get\PYGZus{}removed\PYGZus{}sids}\PYG{p}{(}\PYG{n}{sqs}\PYG{p}{,} \PYG{n}{to\PYGZus{}have}\PYG{p}{,} \PYG{n}{not\PYGZus{}to\PYGZus{}have}\PYG{p}{)}
+    \PYG{k}{return} \PYG{n}{sqs}\PYG{o}{.}\PYG{n}{exclude}\PYG{p}{(}\PYG{n}{sid\PYGZus{}\PYGZus{}in}\PYG{o}{=}\PYG{n}{to\PYGZus{}remove}\PYG{p}{)}
+\end{Verbatim}

@@ -1,0 +1,105 @@
+\section{Crawling}
+\subsection{Django Models}
+Django models are the single and definitive source of information about data. They contain the essential fields and behaviors of the data that are stored. Generally, each model maps to a single database table. 
+
+There are 4 tables created to store the document data, ontology, and term-to-concept mappings in a MySQL database - \texttt{Books}, \texttt{Sections}, \texttt{Concepts}, and \texttt{Concept mappings}. The database, together with the \texttt{Media} folder (\path{myfyp/media/}) in the Application Server, stores all the necessary data for searching.
+
+Django crafts the database schema based on the models defined in the model module (\path{myfyp/dsp_index/models.py}). The module is shown in Appendix \ref{appendix:models}. Practically, the purpose of crawling in this IR application is to fetch data from the Document Server, add entries into the database tables and add PDF files into the \texttt{Media} folder.
+
+\subsection{Document Data}
+A crawler module (\path{myfyp/dsp_index/crawler.py}) was built to crawl sections of 5 DSP e-books from the Document Server. The crawler module contains two methods that crawl e-books and sections respectively - \texttt{crawl\char`_books()} and \texttt{crawl\char`_sections()}. 
+
+\begin{itemize}
+\item \texttt{crawl\char`_books()}: Fetch e-book meta-data and store into the \texttt{Books} table; and fetch e-book PDF files and store into the \texttt{Media} folder.
+\item \texttt{crawl\char`_sections()}: Fetch cleaned text (with formulas removed) and meta-data of all sections and store into the \texttt{Sections} table; and fetch PDF files of each section and store into the \texttt{Media} folder.
+\end{itemize}
+
+In total, 1000 sections were crawled. The \texttt{Books} table has fields \texttt{Book id}, \texttt{Title}, \texttt{Pages}, and \texttt{Pdf}. The \texttt{Sections} table has fields \texttt{Section id}, \texttt{Title}, \texttt{Text}, \texttt{Book}, \texttt{Page}, and \texttt{Pdf}. The description of each field is in Table \ref{tbl:crawl_data}.
+
+\begin{table}[!htbp]
+\begingroup
+\renewcommand{\arraystretch}{1.2}
+\caption{Field Description for Crawled Document Data}
+\label{tbl:crawl_data}
+
+\begin{subtable}{\textwidth}
+\centering
+\caption{Table \texttt{Books} Field Description}
+\begin{tabular}{p{3cm} p{9cm}}
+\toprule
+\multicolumn{1}{c}{\textbf{Field}} & \multicolumn{1}{c}{\textbf{Description}} \\
+\midrule
+\texttt{Book id} & ID of the book \\
+\texttt{Title} & Book title \\
+\texttt{Pages} & Total number of pages of the book \\
+\texttt{Pdf} & File path to the book's PDF file inside the \texttt{Media} folder \\
+\bottomrule       
+\end{tabular}
+\end{subtable}
+
+\begin{subtable}{\textwidth}
+\centering
+\caption{Table \texttt{Sections} Field Description}
+\begin{tabular}{p{3cm} p{9cm}}
+\toprule
+\multicolumn{1}{c}{\textbf{Field}} & \multicolumn{1}{c}{\textbf{Description}} \\
+\midrule
+\texttt{Section id} & ID of the section \\
+\texttt{Title} & Section title \\
+\texttt{Text} & Section text after formula removal \\
+\texttt{Book} & A foreign key to the \texttt{Book} table\\
+\texttt{Page} & Start page of the section in the book  \\
+\texttt{Pdf} & File path to the section's PDF file inside the \texttt{Media} folder \\
+\bottomrule       
+\end{tabular}
+\end{subtable}
+
+\endgroup
+\end{table}
+
+Celery is used to run the time-consuming crawling task in the background. The URL of the message broker for Celery is set in the project settings file (\path{myfyp/myfyp/settings.py}). The Celery task module (\path{myfyp/dsp_index/tasks.py}) is dependent on the crawler module. A single task, named \texttt{crawl\char`_task}, is defined in the task module. The task calls the two crawling methods in the crawler module. This task is triggered when \texttt{crawl\char`_task.delay()} is called.
+
+\subsection{Ontology and Term-to-Concept Mappings}
+Two additional tables, \texttt{Concepts} and \texttt{Concept Mappings}, were created to store the ontology and term-to-concept mappings. The \texttt{Concepts} table has fields \texttt{Label}, \texttt{Name}, \texttt{Position}, and \texttt{Relative to}. The \texttt{Concept Mappings} table has fields \texttt{Concept}, \texttt{Term}, \texttt{Section}, and \texttt{Nth match}. The description of each field is in Table \ref{tbl:onto_and_map}.
+
+\begin{table}[!htbp]
+\begingroup
+\renewcommand{\arraystretch}{1.2}
+\caption{Field Description for Ontology and Concept Mappings}
+\label{tbl:onto_and_map}
+
+\begin{subtable}{\textwidth}
+\centering
+\caption{Table \texttt{Concepts} Field Description}
+\begin{tabular}{p{3cm} p{9cm}}
+\toprule
+\multicolumn{1}{c}{\textbf{Field}} & \multicolumn{1}{c}{\textbf{Description}} \\
+\midrule
+\texttt{Label} & Concept label (e.g. 0, 1, 2, 1.1, 2.1.2, etc.) \\
+\texttt{Name} & Concept name \\
+\texttt{Position} & Relation to the concept \texttt{Relative to}, either \texttt{Child of} or \texttt{Sibling of}  \\
+\texttt{Relative to} & A foreign key to the \texttt{Concepts} table \\
+\bottomrule       
+\end{tabular}
+\end{subtable}
+
+\begin{subtable}{\textwidth}
+\centering
+\caption{Table \texttt{Concept Mappings} Field Description}
+\begin{tabular}{p{3cm} p{9cm}}
+\toprule
+\multicolumn{1}{c}{\textbf{Field}} & \multicolumn{1}{c}{\textbf{Description}} \\
+\midrule
+\texttt{Concept} & A foreign key to the \texttt{Concepts} table \\
+\texttt{Term} & A word or a phrase in the section \\
+\texttt{Section} &A foreign key to the \texttt{Sections} table \\
+\texttt{Nth match} & \textit{N}-th occurrence of the term in the section\\
+\bottomrule       
+\end{tabular}
+\end{subtable}
+
+\endgroup
+\end{table}
+
+As mentioned in Section \ref{subsec:crawl_and_index}, both ontology and term-to-concept mappings have to be manually created for demonstration purpose. Appendix \ref{appendix:onto_create} illustrates how to create a simple ontology via Python shell.
+

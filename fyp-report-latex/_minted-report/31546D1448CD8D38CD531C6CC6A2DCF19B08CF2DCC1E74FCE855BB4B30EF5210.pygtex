@@ -1,0 +1,28 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{n+nx}{\PYGZdl{}pdf\PYGZus{}viewer}
+      \PYG{p}{.}\PYG{n+nx}{find}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}viewer .textLayer \PYGZgt{} div:icontains(\PYGZsq{}\PYGZdq{}} \PYG{o}{+} \PYG{n+nx}{term} \PYG{o}{+} \PYG{l+s+s2}{\PYGZdq{}\PYGZsq{})\PYGZdq{}}\PYG{p}{)}
+      \PYG{p}{.}\PYG{n+nx}{each}\PYG{p}{(}\PYG{k+kd}{function}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+        \PYG{k+kd}{var} \PYG{n+nx}{matches} \PYG{o}{=} \PYG{n+nx}{getImatchIndexes}\PYG{p}{(}\PYG{n+nx}{\PYGZdl{}}\PYG{p}{(}\PYG{k}{this}\PYG{p}{).}\PYG{n+nx}{text}\PYG{p}{(),} \PYG{n+nx}{term}\PYG{p}{);}
+
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kd}{var} \PYG{n+nx}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n+nx}{i} \PYG{o}{\PYGZlt{}} \PYG{n+nx}{matches}\PYG{p}{.}\PYG{n+nx}{length}\PYG{p}{;} \PYG{n+nx}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+          \PYG{n+nx}{count}\PYG{o}{++}\PYG{p}{;}
+          \PYG{k}{if} \PYG{p}{(}\PYG{n+nx}{nth\PYGZus{}match}\PYG{p}{.}\PYG{n+nx}{indexOf}\PYG{p}{(}\PYG{n+nx}{count}\PYG{p}{)} \PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{k+kd}{var} \PYG{n+nx}{text} \PYG{o}{=} \PYG{n+nx}{\PYGZdl{}}\PYG{p}{(}\PYG{k}{this}\PYG{p}{).}\PYG{n+nx}{text}\PYG{p}{(),}
+                \PYG{n+nx}{\PYGZdl{}span} \PYG{o}{=} \PYG{n+nx}{\PYGZdl{}}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZlt{}span\PYGZgt{}\PYGZlt{}/span\PYGZgt{}\PYGZdq{}}\PYG{p}{),}
+                \PYG{n+nx}{cname} \PYG{o}{=} \PYG{n+nx}{\PYGZdl{}}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}.tree li a[data\PYGZhy{}concept\PYGZhy{}label=\PYGZsq{}\PYGZdq{}} \PYG{o}{+}
+                    \PYG{n+nx}{concept\PYGZus{}label} \PYG{o}{+} \PYG{l+s+s2}{\PYGZdq{}\PYGZsq{}]\PYGZdq{}}\PYG{p}{).}\PYG{n+nx}{text}\PYG{p}{();}
+            \PYG{n+nx}{\PYGZdl{}span}\PYG{p}{.}\PYG{n+nx}{attr}\PYG{p}{(\PYGZob{}}
+              \PYG{l+s+s2}{\PYGZdq{}data\PYGZhy{}concept\PYGZhy{}label\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{concept\PYGZus{}label}\PYG{p}{,}
+              \PYG{l+s+s2}{\PYGZdq{}title\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}Concept: \PYGZdq{}} \PYG{o}{+} \PYG{n+nx}{cname}
+            \PYG{p}{\PYGZcb{});}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n+nx}{show\PYGZus{}highlight}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+              \PYG{n+nx}{\PYGZdl{}span}\PYG{p}{.}\PYG{n+nx}{addClass}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}highlight mapping\PYGZdq{}}\PYG{p}{);}
+            \PYG{p}{\PYGZcb{}}
+            \PYG{n+nx}{\PYGZdl{}span}\PYG{p}{.}\PYG{n+nx}{text}\PYG{p}{(}\PYG{n+nx}{term}\PYG{p}{);}
+            \PYG{n+nx}{\PYGZdl{}}\PYG{p}{(}\PYG{k}{this}\PYG{p}{).}\PYG{n+nx}{html}\PYG{p}{(}\PYG{n+nx}{text}\PYG{p}{.}\PYG{n+nx}{substr}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n+nx}{matches}\PYG{p}{[}\PYG{n+nx}{i}\PYG{p}{])} \PYG{o}{+}
+                \PYG{n+nx}{\PYGZdl{}span}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{].}\PYG{n+nx}{outerHTML} \PYG{o}{+}
+                \PYG{n+nx}{text}\PYG{p}{.}\PYG{n+nx}{substr}\PYG{p}{(}\PYG{n+nx}{matches}\PYG{p}{[}\PYG{n+nx}{i}\PYG{p}{]} \PYG{o}{+} \PYG{n+nx}{term}\PYG{p}{.}\PYG{n+nx}{length}\PYG{p}{));}
+          \PYG{p}{\PYGZcb{}}
+        \PYG{p}{\PYGZcb{}}
+      \PYG{p}{\PYGZcb{});}
+\end{Verbatim}

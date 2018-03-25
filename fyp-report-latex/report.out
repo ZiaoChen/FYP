@@ -1,0 +1,96 @@
+\BOOKMARK [0][-]{chapter*.1}{Abstract}{}% 1
+\BOOKMARK [0][-]{chapter*.2}{Acknowledgments}{}% 2
+\BOOKMARK [0][-]{chapter*.3}{Contents}{}% 3
+\BOOKMARK [0][-]{chapter*.4}{List of Tables}{}% 4
+\BOOKMARK [0][-]{chapter*.5}{List of Figures}{}% 5
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 6
+\BOOKMARK [1][-]{section.1.1}{Background}{chapter.1}% 7
+\BOOKMARK [1][-]{section.1.2}{Aims and Objectives}{chapter.1}% 8
+\BOOKMARK [1][-]{section.1.3}{Scope}{chapter.1}% 9
+\BOOKMARK [1][-]{section.1.4}{Report Organization}{chapter.1}% 10
+\BOOKMARK [0][-]{chapter.2}{Literature Review}{}% 11
+\BOOKMARK [1][-]{section.2.1}{Concept Ontology}{chapter.2}% 12
+\BOOKMARK [1][-]{section.2.2}{Case Study: GoPubMed}{chapter.2}% 13
+\BOOKMARK [1][-]{section.2.3}{Keyword Search vs Concept Search}{chapter.2}% 14
+\BOOKMARK [0][-]{chapter.3}{Proposed Methodology and System Specifications}{}% 15
+\BOOKMARK [1][-]{section.3.1}{Document Server}{chapter.3}% 16
+\BOOKMARK [2][-]{subsection.3.1.1}{Introduction}{section.3.1}% 17
+\BOOKMARK [2][-]{subsection.3.1.2}{Text Extraction from PDF}{section.3.1}% 18
+\BOOKMARK [2][-]{subsection.3.1.3}{RESTful API for Versioning Data}{section.3.1}% 19
+\BOOKMARK [1][-]{section.3.2}{Normalization}{chapter.3}% 20
+\BOOKMARK [2][-]{subsection.3.2.1}{Formula Removal}{section.3.2}% 21
+\BOOKMARK [2][-]{subsection.3.2.2}{Solr Filters}{section.3.2}% 22
+\BOOKMARK [1][-]{section.3.3}{Term-to-Concept Mappings}{chapter.3}% 23
+\BOOKMARK [1][-]{section.3.4}{System Architecture}{chapter.3}% 24
+\BOOKMARK [2][-]{subsection.3.4.1}{Crawling and Indexing}{section.3.4}% 25
+\BOOKMARK [2][-]{subsection.3.4.2}{Searching and Viewing}{section.3.4}% 26
+\BOOKMARK [1][-]{section.3.5}{Technology Stack}{chapter.3}% 27
+\BOOKMARK [2][-]{subsection.3.5.1}{Django}{section.3.5}% 28
+\BOOKMARK [2][-]{subsection.3.5.2}{MySQL}{section.3.5}% 29
+\BOOKMARK [2][-]{subsection.3.5.3}{Celery}{section.3.5}% 30
+\BOOKMARK [2][-]{subsection.3.5.4}{Redis}{section.3.5}% 31
+\BOOKMARK [2][-]{subsection.3.5.5}{Solr}{section.3.5}% 32
+\BOOKMARK [2][-]{subsection.3.5.6}{HayStack}{section.3.5}% 33
+\BOOKMARK [2][-]{subsection.3.5.7}{Django-Treebeard}{section.3.5}% 34
+\BOOKMARK [2][-]{subsection.3.5.8}{PDF.js}{section.3.5}% 35
+\BOOKMARK [2][-]{subsection.3.5.9}{jQuery}{section.3.5}% 36
+\BOOKMARK [2][-]{subsection.3.5.10}{Bootstrap}{section.3.5}% 37
+\BOOKMARK [0][-]{chapter.4}{Implementation}{}% 38
+\BOOKMARK [1][-]{section.4.1}{Environment Setup}{chapter.4}% 39
+\BOOKMARK [1][-]{section.4.2}{Crawling}{chapter.4}% 40
+\BOOKMARK [2][-]{subsection.4.2.1}{Django Models}{section.4.2}% 41
+\BOOKMARK [2][-]{subsection.4.2.2}{Document Data}{section.4.2}% 42
+\BOOKMARK [2][-]{subsection.4.2.3}{Ontology and Term-to-Concept Mappings}{section.4.2}% 43
+\BOOKMARK [1][-]{section.4.3}{Indexing}{chapter.4}% 44
+\BOOKMARK [2][-]{subsection.4.3.1}{Haystack SearchIndex}{section.4.3}% 45
+\BOOKMARK [2][-]{subsection.4.3.2}{Index Building}{section.4.3}% 46
+\BOOKMARK [1][-]{section.4.4}{Searching}{chapter.4}% 47
+\BOOKMARK [2][-]{subsection.4.4.1}{Searching and Filtering}{section.4.4}% 48
+\BOOKMARK [2][-]{subsection.4.4.2}{Search Results View}{section.4.4}% 49
+\BOOKMARK [2][-]{subsection.4.4.3}{Concept Tree Generation for Search Results}{section.4.4}% 50
+\BOOKMARK [1][-]{section.4.5}{Viewing}{chapter.4}% 51
+\BOOKMARK [2][-]{subsection.4.5.1}{Section Details View}{section.4.5}% 52
+\BOOKMARK [2][-]{subsection.4.5.2}{PDF Viewer}{section.4.5}% 53
+\BOOKMARK [2][-]{subsection.4.5.3}{Concept Tree Generation for a Section}{section.4.5}% 54
+\BOOKMARK [2][-]{subsection.4.5.4}{Term Highlighting in PDF}{section.4.5}% 55
+\BOOKMARK [0][-]{chapter.5}{System Demonstration}{}% 56
+\BOOKMARK [1][-]{section.5.1}{Overview}{chapter.5}% 57
+\BOOKMARK [1][-]{section.5.2}{Crawling}{chapter.5}% 58
+\BOOKMARK [2][-]{subsection.5.2.1}{Document Data}{section.5.2}% 59
+\BOOKMARK [2][-]{subsection.5.2.2}{Ontology and Term-to-Concept Mappings}{section.5.2}% 60
+\BOOKMARK [1][-]{section.5.3}{Indexing}{chapter.5}% 61
+\BOOKMARK [1][-]{section.5.4}{Searching}{chapter.5}% 62
+\BOOKMARK [1][-]{section.5.5}{Viewing}{chapter.5}% 63
+\BOOKMARK [0][-]{chapter.6}{Conclusions and Future Work}{}% 64
+\BOOKMARK [1][-]{section.6.1}{Conclusions}{chapter.6}% 65
+\BOOKMARK [1][-]{section.6.2}{Recommendations for Future Work}{chapter.6}% 66
+\BOOKMARK [2][-]{subsection.6.2.1}{Ontology Development}{section.6.2}% 67
+\BOOKMARK [2][-]{subsection.6.2.2}{Concept Recognition}{section.6.2}% 68
+\BOOKMARK [2][-]{subsection.6.2.3}{Functionality Improvement}{section.6.2}% 69
+\BOOKMARK [0][-]{section*.32}{Appendices}{}% 70
+\BOOKMARK [0][-]{Appendix.a.A}{RESTful API of Document Server}{}% 71
+\BOOKMARK [0][-]{Appendix.a.B}{Environment Setup for Application Development}{}% 72
+\BOOKMARK [1][-]{section.a.B.1}{Install Ubuntu Virtual Machine}{Appendix.a.B}% 73
+\BOOKMARK [2][-]{subsection.a.B.1.1}{Install VirtualBox}{section.a.B.1}% 74
+\BOOKMARK [2][-]{subsection.a.B.1.2}{Install Ubuntu}{section.a.B.1}% 75
+\BOOKMARK [1][-]{section.a.B.2}{Host Solr, Redis, and MySQL in Ubuntu}{Appendix.a.B}% 76
+\BOOKMARK [2][-]{subsection.a.B.2.1}{Host Solr}{section.a.B.2}% 77
+\BOOKMARK [2][-]{subsection.a.B.2.2}{Host Redis}{section.a.B.2}% 78
+\BOOKMARK [2][-]{subsection.a.B.2.3}{Host MySQL}{section.a.B.2}% 79
+\BOOKMARK [1][-]{section.a.B.3}{Create Python Virtual Environment in Windows}{Appendix.a.B}% 80
+\BOOKMARK [2][-]{subsection.a.B.3.1}{Install Python 3}{section.a.B.3}% 81
+\BOOKMARK [2][-]{subsection.a.B.3.2}{Install Virtual Environment Packages}{section.a.B.3}% 82
+\BOOKMARK [2][-]{subsection.a.B.3.3}{Create Python Virtual Environment}{section.a.B.3}% 83
+\BOOKMARK [1][-]{section.a.B.4}{Clone Project from GitHub}{Appendix.a.B}% 84
+\BOOKMARK [2][-]{subsection.a.B.4.1}{Install Python IDE PyCharm}{section.a.B.4}% 85
+\BOOKMARK [2][-]{subsection.a.B.4.2}{Install Git}{section.a.B.4}% 86
+\BOOKMARK [2][-]{subsection.a.B.4.3}{Clone Project from GitHub}{section.a.B.4}% 87
+\BOOKMARK [1][-]{section.a.B.5}{Install Required Python Packages}{Appendix.a.B}% 88
+\BOOKMARK [1][-]{section.a.B.6}{Configure Solr and MySQL}{Appendix.a.B}% 89
+\BOOKMARK [2][-]{subsection.a.B.6.1}{Update Ubuntu's IP Address in Settings}{section.a.B.6}% 90
+\BOOKMARK [2][-]{subsection.a.B.6.2}{Configure Solr Schema}{section.a.B.6}% 91
+\BOOKMARK [2][-]{subsection.a.B.6.3}{Configure MySQL Database}{section.a.B.6}% 92
+\BOOKMARK [1][-]{section.a.B.7}{Start All Servers}{Appendix.a.B}% 93
+\BOOKMARK [1][-]{section.a.B.8}{Access Webpages through Browsers}{Appendix.a.B}% 94
+\BOOKMARK [0][-]{Appendix.a.C}{Django Models}{}% 95
+\BOOKMARK [0][-]{Appendix.a.D}{Ontology Creation via Python Shell}{}% 96
